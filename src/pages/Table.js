@@ -6,7 +6,7 @@ function Table() {
   const { data } = useContext(tableContext);
   return (
     <div>
-      <h1>Table</h1>
+      <h3>Table</h3>
       <table>
         <thead>
           <tr>

@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import TableProvider from './context/TableProvider';
+import Filters from './pages/Filters';
 import Table from './pages/Table';
 
 function App() {
   return (
     <TableProvider>
-      <span>Hello, App!</span>
+      <span>Projeto Star Wars - Trybe</span>
+      <Filters />
       <Table />
     </TableProvider>
   );
