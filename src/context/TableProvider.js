@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import tableContext from './tableContext';
@@ -7,6 +8,10 @@ export default function TableProvider({ children }) { // onde usar será o pai d
   const [data, setData] = useState([]);
   const [inputName, setInputName] = useState([]);
   const [dataMutavel, setDataMutavel] = useState([]);
+  const [columnFilter, setColumnFilter] = useState('population');
+  const [comparisonFilter, setComparisonFilter] = useState('maior que');
+  const [inputNumber, setInputNumber] = useState([]);
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
 
   const getPlanets = () => {
     fetch('https://swapi-trybe.herokuapp.com/api/planets/')
@@ -34,8 +39,19 @@ export default function TableProvider({ children }) { // onde usar será o pai d
     filterInput();
   }, [inputName]);
   return (
-    <tableContext.Provider value={ { data: dataMutavel, inputName, setInputName } }>
-      {/* // input:inputName */}
+    <tableContext.Provider
+      value={ { data: dataMutavel,
+        inputName,
+        setInputName,
+        columnFilter,
+        setColumnFilter,
+        comparisonFilter,
+        setComparisonFilter,
+        inputNumber,
+        setInputNumber,
+        filterByNumericValues,
+        setFilterByNumericValues } }
+    >
       { children }
     </tableContext.Provider>
   );
