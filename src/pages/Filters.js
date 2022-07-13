@@ -27,7 +27,7 @@ function Filters() {
     setArrayOptions([...arrayOptions.filter((selected) => selected !== columnFilter)]); // aqui remove
   });
   useEffect(() => {
-    setColumnFilter(arrayOptions[0]); //aqui atualiza o value do input com o novo arrayOptions(que é modificado)
+    setColumnFilter(arrayOptions[0]); // aqui atualiza o value do input com o novo arrayOptions(que é modificado)
   }, [arrayOptions]);
   return (
     <div>
