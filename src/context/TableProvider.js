@@ -35,17 +35,6 @@ export default function TableProvider({ children }) { // onde usar será o pai d
     getPlanets();
   }, []);
 
-  // const optionFilters = () => {
-  //   switch (filterByNumericValues.comparisonFilter) { // fazer primeiro operador em função do inputNumber / switch case com maior
-  //   case 'maior que':
-  //     setDataMutavel(dataMutavel
-  //       .filter((e) => Number(e[filterByNumericValues.columnFilter]
-  //          > Number(filterByNumericValues.inputNumber))));
-  //     break;
-  //   default:
-  //     return dataMutavel;
-  //   }
-  // };
   useEffect(() => {
     function optionFilters() {
       let teste = [...data];

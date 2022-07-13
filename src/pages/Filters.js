@@ -1,8 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { useEffect } from 'react';
 import tableContext from '../context/tableContext';
 // colocar as options em um array e dar o map no select
 // ai todas as vezes que a pessoa selecionar com o mouse, ele exclui do array;
-
+const INITIAL_COLUMN_OPTIONS = [
+  'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
 function Filters() {
   const { inputName,
     setInputName,
@@ -15,14 +17,18 @@ function Filters() {
     filterByNumericValues,
     setFilterByNumericValues } = useContext(tableContext);
   // const [clickSubmit, setClickSubmit] = useState(false);
+  const [arrayOptions, setArrayOptions] = useState(INITIAL_COLUMN_OPTIONS);
 
-  const clickSubmitButton = (() => {
-    // setClickSubmit(true); //! não ta fazendo
+  const clickSubmitButton = (() => { // toda vez que clicar no botao filtrar, ele tem que remover o option selecionado
     setFilterByNumericValues(
       [...filterByNumericValues,
         { inputName, columnFilter, comparisonFilter, inputNumber }],
     );
+    setArrayOptions([...arrayOptions.filter((selected) => selected !== columnFilter)]); // aqui remove
   });
+  useEffect(() => {
+    setColumnFilter(arrayOptions[0]); //aqui atualiza o value do input com o novo arrayOptions(que é modificado)
+  }, [arrayOptions]);
   return (
     <div>
       <h3>Filtros</h3>
@@ -46,11 +52,13 @@ function Filters() {
             value={ columnFilter }
             onChange={ (e) => setColumnFilter(e.target.value) }
           >
-            <option value="population">population</option>
+            {arrayOptions.map((op, index) => (
+              <option key={ index } value={ op }>{ op }</option>)) }
+            {/* <option value="population">population</option>
             <option value="orbital_period">orbital_period</option>
             <option value="diameter">diameter</option>
             <option value="rotation_period">rotation_period</option>
-            <option value="surface_water">surface_water</option>
+            <option value="surface_water">surface_water</option> */}
           </select>
         </label>
         <label htmlFor="comparison-filter">
