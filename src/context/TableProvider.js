@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import tableContext from './tableContext';
 
-// irá prover estado global
+// irá prover o estado global
 export default function TableProvider({ children }) { // onde usar será o pai do componente
   const [data, setData] = useState([]);
   const [inputName, setInputName] = useState([]);
   const [dataMutavel, setDataMutavel] = useState([]);
   const [columnFilter, setColumnFilter] = useState('population');
   const [comparisonFilter, setComparisonFilter] = useState('maior que');
-  const [inputNumber, setInputNumber] = useState([]);
+  const [inputNumber, setInputNumber] = useState([0]);
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
 
   const getPlanets = () => {
@@ -34,6 +34,40 @@ export default function TableProvider({ children }) { // onde usar será o pai d
   useEffect(() => {
     getPlanets();
   }, []);
+
+  // const optionFilters = () => {
+  //   switch (filterByNumericValues.comparisonFilter) { // fazer primeiro operador em função do inputNumber / switch case com maior
+  //   case 'maior que':
+  //     setDataMutavel(dataMutavel
+  //       .filter((e) => Number(e[filterByNumericValues.columnFilter]
+  //          > Number(filterByNumericValues.inputNumber))));
+  //     break;
+  //   default:
+  //     return dataMutavel;
+  //   }
+  // };
+  useEffect(() => {
+    function optionFilters() {
+      let teste = [...data];
+      filterByNumericValues.forEach((filter) => {
+        if (filter.comparisonFilter === 'maior que') {
+          teste = teste
+            .filter((e) => Number(e[filter.columnFilter]) > Number(filter.inputNumber));
+        }
+        if (filter.comparisonFilter === 'menor que') {
+          teste = teste
+            .filter((e) => Number(e[filter.columnFilter]) < Number(filter.inputNumber));
+        }
+        if (filter.comparisonFilter === 'igual a') {
+          teste = teste
+            .filter((e) => Number(e[filter.columnFilter])
+            === Number(filter.inputNumber));
+        }
+      });
+      setDataMutavel(teste);
+    }
+    optionFilters();
+  }, [filterByNumericValues]);
 
   useEffect(() => {
     filterInput();

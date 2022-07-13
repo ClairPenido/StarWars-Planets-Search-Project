@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import tableContext from '../context/tableContext';
+// colocar as options em um array e dar o map no select
+// ai todas as vezes que a pessoa selecionar com o mouse, ele exclui do array;
 
 function Filters() {
   const { inputName,
@@ -10,26 +12,30 @@ function Filters() {
     setComparisonFilter,
     inputNumber,
     setInputNumber,
-    // filterByNumericValues,
+    filterByNumericValues,
     setFilterByNumericValues } = useContext(tableContext);
+  // const [clickSubmit, setClickSubmit] = useState(false);
 
-  const teste = (() => {
+  const clickSubmitButton = (() => {
+    // setClickSubmit(true); //! não ta fazendo
     setFilterByNumericValues(
-      { inputName, columnFilter, comparisonFilter, inputNumber },
+      [...filterByNumericValues,
+        { inputName, columnFilter, comparisonFilter, inputNumber }],
     );
   });
   return (
     <div>
       <h3>Filtros</h3>
+      <input
+        data-testid="name-filter"
+        name="filter name"
+        type="text"
+        value={ inputName }
+        onChange={ (e) => setInputName(e.target.value) }
+      />
+      <p />
       <fieldset>
-        {/* <legend>Filtros:</legend> */}
-        <input
-          data-testid="name-filter"
-          name="filter name"
-          type="text"
-          value={ inputName }
-          onChange={ (e) => setInputName(e.target.value) }
-        />
+        <legend>Filtros de Conteúdo</legend>
         <label htmlFor="column-filter">
           {' '}
           Coluna
@@ -72,7 +78,7 @@ function Filters() {
         <button
           data-testid="button-filter"
           type="submit"
-          onClick={ teste }
+          onClick={ clickSubmitButton }
         >
           Filtrar
 
