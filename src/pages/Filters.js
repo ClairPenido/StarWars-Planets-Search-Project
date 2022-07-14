@@ -96,31 +96,30 @@ function Filters() {
         >
           Filtrar
         </button>
+        {' '}
+        <button
+          data-testid="button-remove-filters"
+          type="submit"
+          onClick={ clickRemoveFilters }
+        >
+          Remover todas filtragens
+        </button>
       </fieldset>
       {filterByNumericValues.map((elem, index) => (
-        <>
-          <p key={ index } data-testid="filter">
-            <span value={ columnFilter }>{ elem.columnFilter }</span>
-            {' '}
-            <span value={ comparisonFilter }>{ elem.comparisonFilter }</span>
-            {' '}
-            <span value={ inputNumber }>{ elem.inputNumber }</span>
-            {' '}
-            <button
-              type="button"
-              onClick={ () => clickRemoveSelectedFilter(elem.columnFilter) }
-            >
-              X
-            </button>
-          </p>
+        <p key={ index } data-testid="filter">
+          <span value={ columnFilter }>{ elem.columnFilter }</span>
+          {' '}
+          <span value={ comparisonFilter }>{ elem.comparisonFilter }</span>
+          {' '}
+          <span value={ inputNumber }>{ elem.inputNumber }</span>
+          {' '}
           <button
-            data-testid="button-remove-filters"
-            type="submit"
-            onClick={ clickRemoveFilters }
+            type="button"
+            onClick={ () => clickRemoveSelectedFilter(elem.columnFilter) }
           >
-            Remover todas filtragens
+            X
           </button>
-        </>)) }
+        </p>)) }
     </div>
   );
 }
