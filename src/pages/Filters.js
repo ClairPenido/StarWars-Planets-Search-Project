@@ -16,7 +16,6 @@ function Filters() {
     setInputNumber,
     filterByNumericValues,
     setFilterByNumericValues } = useContext(tableContext);
-  // const [clickSubmit, setClickSubmit] = useState(false);
   const [arrayOptions, setArrayOptions] = useState(INITIAL_COLUMN_OPTIONS);
 
   const clickSubmitButton = (() => { // toda vez que clicar no botao filtrar, ele tem que remover o option selecionado
@@ -34,6 +33,12 @@ function Filters() {
     setArrayOptions(INITIAL_COLUMN_OPTIONS);
     setFilterByNumericValues([]);
   });
+
+  const clickRemoveSelectedFilter = (e) => {
+    setArrayOptions([...arrayOptions, e]);
+    setFilterByNumericValues([...filterByNumericValues
+      .filter((clicado) => clicado.columnFilter !== e)]);
+  };
 
   return (
     <div>
@@ -87,7 +92,7 @@ function Filters() {
         <button
           data-testid="button-filter"
           type="submit"
-          onClick={ clickSubmitButton }
+          onClick={ () => clickSubmitButton() }
         >
           Filtrar
         </button>
@@ -102,8 +107,8 @@ function Filters() {
             <span value={ inputNumber }>{ elem.inputNumber }</span>
             {' '}
             <button
-              type="submit"
-              // onClick={ clickRemoverFiltro }
+              type="button"
+              onClick={ () => clickRemoveSelectedFilter(elem.columnFilter) }
             >
               X
             </button>
