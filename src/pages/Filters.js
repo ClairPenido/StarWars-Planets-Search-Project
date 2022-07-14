@@ -54,11 +54,6 @@ function Filters() {
           >
             {arrayOptions.map((op, index) => (
               <option key={ index } value={ op }>{ op }</option>)) }
-            {/* <option value="population">population</option>
-            <option value="orbital_period">orbital_period</option>
-            <option value="diameter">diameter</option>
-            <option value="rotation_period">rotation_period</option>
-            <option value="surface_water">surface_water</option> */}
           </select>
         </label>
         <label htmlFor="comparison-filter">
@@ -91,8 +86,15 @@ function Filters() {
           Filtrar
 
         </button>
-
       </fieldset>
+      {filterByNumericValues.map((elem, index) => (
+        <p key={ index }>
+          <span value={ columnFilter }>{ elem.columnFilter }</span>
+          {' '}
+          <span value={ comparisonFilter }>{ elem.comparisonFilter }</span>
+          {' '}
+          <span value={ inputNumber }>{ elem.inputNumber }</span>
+        </p>)) }
     </div>
   );
 }
