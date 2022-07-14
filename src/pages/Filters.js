@@ -1,5 +1,5 @@
-import React, { useContext, useState } from 'react';
-import { useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useContext, useState, useEffect } from 'react';
 import tableContext from '../context/tableContext';
 // colocar as options em um array e dar o map no select
 // ai todas as vezes que a pessoa selecionar com o mouse, ele exclui do array;
