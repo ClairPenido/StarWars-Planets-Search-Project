@@ -37,23 +37,23 @@ export default function TableProvider({ children }) { // onde usar será o pai d
 
   useEffect(() => {
     function optionFilters() {
-      let teste = [...data];
+      let arrayData = [...data];
       filterByNumericValues.forEach((filter) => {
         if (filter.comparisonFilter === 'maior que') {
-          teste = teste
+          arrayData = arrayData
             .filter((e) => Number(e[filter.columnFilter]) > Number(filter.inputNumber));
         }
         if (filter.comparisonFilter === 'menor que') {
-          teste = teste
+          arrayData = arrayData
             .filter((e) => Number(e[filter.columnFilter]) < Number(filter.inputNumber));
         }
         if (filter.comparisonFilter === 'igual a') {
-          teste = teste
+          arrayData = arrayData
             .filter((e) => Number(e[filter.columnFilter])
             === Number(filter.inputNumber));
         }
       });
-      setDataMutavel(teste);
+      setDataMutavel(arrayData);
     }
     optionFilters();
   }, [filterByNumericValues]);
