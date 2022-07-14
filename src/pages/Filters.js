@@ -29,6 +29,12 @@ function Filters() {
   useEffect(() => {
     setColumnFilter(arrayOptions[0]); // aqui atualiza o value do input com o novo arrayOptions(que é modificado)
   }, [arrayOptions]);
+
+  const clickRemoveFilters = (() => {
+    setArrayOptions(INITIAL_COLUMN_OPTIONS);
+    setFilterByNumericValues([]);
+  });
+
   return (
     <div>
       <h3>Filtros</h3>
@@ -84,17 +90,32 @@ function Filters() {
           onClick={ clickSubmitButton }
         >
           Filtrar
-
         </button>
       </fieldset>
       {filterByNumericValues.map((elem, index) => (
-        <p key={ index }>
-          <span value={ columnFilter }>{ elem.columnFilter }</span>
-          {' '}
-          <span value={ comparisonFilter }>{ elem.comparisonFilter }</span>
-          {' '}
-          <span value={ inputNumber }>{ elem.inputNumber }</span>
-        </p>)) }
+        <>
+          <p key={ index } data-testid="filter">
+            <span value={ columnFilter }>{ elem.columnFilter }</span>
+            {' '}
+            <span value={ comparisonFilter }>{ elem.comparisonFilter }</span>
+            {' '}
+            <span value={ inputNumber }>{ elem.inputNumber }</span>
+            {' '}
+            <button
+              type="submit"
+              // onClick={ clickRemoverFiltro }
+            >
+              X
+            </button>
+          </p>
+          <button
+            data-testid="button-remove-filters"
+            type="submit"
+            onClick={ clickRemoveFilters }
+          >
+            Remover todas filtragens
+          </button>
+        </>)) }
     </div>
   );
 }
