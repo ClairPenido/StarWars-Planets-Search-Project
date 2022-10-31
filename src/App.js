@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './app.css';
 import TableProvider from './context/TableProvider';
 import Filters from './pages/Filters';
 import Table from './pages/Table';
@@ -7,7 +7,7 @@ import Table from './pages/Table';
 function App() {
   return (
     <TableProvider>
-      <span>Projeto Star Wars - Trybe</span>
+      <h1>Projeto Star Wars - Trybe</h1>
       <Filters />
       <Table />
     </TableProvider>

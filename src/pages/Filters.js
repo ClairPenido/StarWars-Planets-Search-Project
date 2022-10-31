@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useState, useEffect } from 'react';
 import tableContext from '../context/tableContext';
 // colocar as options em um array e dar o map no select
@@ -27,6 +26,7 @@ function Filters() {
   });
   useEffect(() => {
     setColumnFilter(arrayOptions[0]); // aqui atualiza o value do input com o novo arrayOptions(que é modificado)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [arrayOptions]);
 
   const clickRemoveFilters = (() => {
@@ -42,17 +42,17 @@ function Filters() {
 
   return (
     <div>
-      <h3>Filtros</h3>
       <input
+        placeholder="buscar"
         data-testid="name-filter"
         name="filter name"
         type="text"
         value={ inputName }
         onChange={ (e) => setInputName(e.target.value) }
       />
-      <p />
+
       <fieldset>
-        <legend>Filtros de Conteúdo</legend>
+        <legend>Selecione os filtros:</legend>
         <label htmlFor="column-filter">
           {' '}
           Coluna
