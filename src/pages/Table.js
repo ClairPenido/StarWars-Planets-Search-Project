@@ -1,12 +1,11 @@
-// import React from 'react';
 import React, { useContext } from 'react';
 import tableContext from '../context/tableContext';
+import '../styles/table_style.css';
 
 function Table() {
   const { data } = useContext(tableContext);
   return (
     <div>
-      <h3>Table</h3>
       <table>
         <thead>
           <tr>

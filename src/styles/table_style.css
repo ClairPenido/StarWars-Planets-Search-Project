@@ -1,0 +1,44 @@
+/* stylelint-disable color-hex-case */
+
+/* stylelint-disable font-weight-notation */
+
+@import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil&display=swap') ;
+
+/* td = titulo das colunas */
+table {
+  background-color: #282B28;
+  border-collapse: collapse;
+  color: white;
+  font-family: Stardos Stencil , cursive;
+  margin: 5px 0;
+}
+
+th, td {
+  border-bottom: 1px solid #F5EFDA;
+  border-top: 1px solid #F5EFDA;
+  padding: 10px;
+  text-align: center;
+  width: 120px;
+}
+
+th {
+  font-weight: bold;
+}
+
+tr:nth-child( even ) {
+  background-color: black;
+}
+
+tr:hover:nth-child( 1n + 2 ) {
+  background-color: #F5EFDA;
+  color: black;
+}
+
+/*
+table button{
+  background-color: #BF9F78;
+  border: 2px solid #D8B568;
+  width: 55px;
+  margin: 3px 3px;
+  border-radius: 5px;
+} */
