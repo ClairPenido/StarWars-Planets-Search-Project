@@ -7,7 +7,6 @@ import Table from './pages/Table';
 function App() {
   return (
     <TableProvider>
-      <h1>Projeto Star Wars - Trybe</h1>
       <Filters />
       <Table />
     </TableProvider>

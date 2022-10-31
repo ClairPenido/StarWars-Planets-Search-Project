@@ -1,5 +1,8 @@
+/* eslint-disable react/jsx-max-depth */
 import React, { useContext, useState, useEffect } from 'react';
 import tableContext from '../context/tableContext';
+import '../styles/filters_style.css';
+
 // colocar as options em um array e dar o map no select
 // ai todas as vezes que a pessoa selecionar com o mouse, ele exclui do array;
 const INITIAL_COLUMN_OPTIONS = [
@@ -15,6 +18,7 @@ function Filters() {
     setInputNumber,
     filterByNumericValues,
     setFilterByNumericValues } = useContext(tableContext);
+
   const [arrayOptions, setArrayOptions] = useState(INITIAL_COLUMN_OPTIONS);
 
   const clickSubmitButton = (() => { // toda vez que clicar no botao filtrar, ele tem que remover o option selecionado
@@ -41,47 +45,51 @@ function Filters() {
   };
 
   return (
-    <div>
-      <input
-        placeholder="buscar"
-        data-testid="name-filter"
-        name="filter name"
-        type="text"
-        value={ inputName }
-        onChange={ (e) => setInputName(e.target.value) }
-      />
-
-      <fieldset>
-        <legend>Selecione os filtros:</legend>
-        <label htmlFor="column-filter">
-          {' '}
-          Coluna
-          {' '}
-          <select
-            data-testid="column-filter"
-            name="column-filter"
-            value={ columnFilter }
-            onChange={ (e) => setColumnFilter(e.target.value) }
-          >
-            {arrayOptions.map((op, index) => (
-              <option key={ index } value={ op }>{ op }</option>)) }
-          </select>
+    <div className="body-filter">
+      <header>
+        <h1> Projeto Star Wars - Trybe </h1>
+        <input
+          className="filter-name"
+          placeholder="buscar planeta"
+          data-testid="name-filter"
+          name="filter name"
+          type="text"
+          value={ inputName }
+          onChange={ (e) => setInputName(e.target.value) }
+        />
+      </header>
+      <form>
+        <label htmlFor="column-filter" className="field">
+          <span>Coluna</span>
+          <div className="select-filter">
+            <select
+              data-testid="column-filter"
+              name="column-filter"
+              value={ columnFilter }
+              onChange={ (e) => setColumnFilter(e.target.value) }
+            >
+              {arrayOptions.map((op, index) => (
+                <option key={ index } value={ op }>{ op }</option>)) }
+            </select>
+          </div>
         </label>
         <label htmlFor="comparison-filter">
-          {' '}
-          Operador
-          {' '}
-          <select
-            data-testid="comparison-filter"
-            name="comparison-filter"
-            value={ comparisonFilter }
-            onChange={ (e) => setComparisonFilter(e.target.value) }
-          >
-            <option value="maior que">maior que</option>
-            <option value="menor que">menor que</option>
-            <option value="igual a">igual a</option>
-          </select>
+          <span>Operador</span>
+          <div className="select-filter">
+            <select
+              className="select-field"
+              data-testid="comparison-filter"
+              name="comparison-filter"
+              value={ comparisonFilter }
+              onChange={ (e) => setComparisonFilter(e.target.value) }
+            >
+              <option value="maior que">maior que</option>
+              <option value="menor que">menor que</option>
+              <option value="igual a">igual a</option>
+            </select>
+          </div>
           <input
+            className="input-value"
             data-testid="value-filter"
             name="value-filter"
             type="number"
@@ -90,21 +98,22 @@ function Filters() {
           />
         </label>
         <button
+          className="button-filter"
           data-testid="button-filter"
           type="submit"
           onClick={ () => clickSubmitButton() }
         >
           Filtrar
         </button>
-        {' '}
         <button
+          className="button-filter"
           data-testid="button-remove-filters"
           type="submit"
           onClick={ clickRemoveFilters }
         >
           Remover todas filtragens
         </button>
-      </fieldset>
+      </form>
       {filterByNumericValues.map((elem, index) => (
         <p key={ index } data-testid="filter">
           <span value={ columnFilter }>{ elem.columnFilter }</span>

@@ -10,4 +10,4 @@
 
 <p> Link para olhar e experimentar a aplicação: </p> <br>
 
-<!-- [StarWars] -->
+[StarWars](https://wonderful-panda-38e552.netlify.app/)
