@@ -21,7 +21,8 @@ function Filters() {
 
   const [arrayOptions, setArrayOptions] = useState(INITIAL_COLUMN_OPTIONS);
 
-  const clickSubmitButton = (() => { // toda vez que clicar no botao filtrar, ele tem que remover o option selecionado
+  const clickSubmitButton = ((e) => { // toda vez que clicar no botao filtrar, ele tem que remover o option selecionado
+    e.preventDefault();
     setFilterByNumericValues(
       [...filterByNumericValues,
         { inputName, columnFilter, comparisonFilter, inputNumber }],
@@ -30,7 +31,6 @@ function Filters() {
   });
   useEffect(() => {
     setColumnFilter(arrayOptions[0]); // aqui atualiza o value do input com o novo arrayOptions(que é modificado)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [arrayOptions]);
 
   const clickRemoveFilters = (() => {
@@ -88,20 +88,20 @@ function Filters() {
               <option value="igual a">igual a</option>
             </select>
           </div>
-          <input
-            className="input-value"
-            data-testid="value-filter"
-            name="value-filter"
-            type="number"
-            value={ inputNumber }
-            onChange={ (e) => setInputNumber(e.target.value) }
-          />
         </label>
+        <input
+          className="input-value"
+          data-testid="value-filter"
+          name="value-filter"
+          type="number"
+          value={ inputNumber }
+          onChange={ (e) => setInputNumber(e.target.value) }
+        />
         <button
           className="button-filter"
           data-testid="button-filter"
           type="submit"
-          onClick={ () => clickSubmitButton() }
+          onClick={ (e) => clickSubmitButton(e) }
         >
           Filtrar
         </button>

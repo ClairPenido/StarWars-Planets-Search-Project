@@ -10,6 +10,7 @@ h1 {
 form {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin: 10px auto;
 }
 
@@ -94,15 +95,14 @@ select:-ms-expand {
 }
 
 .button-filter:hover {
-  background-color: #ffff00f8;
+  background-color: #ffff003f;
   border: 1px solid #ffff00f8;
   color: white;
-
-  /* opacity: 0.1; */
 
 }
 
 .input-value {
+  align-self: end;
   background-color: black;
   border: 0.5px solid #F5EFDA;
   border-radius: 0.25em;
