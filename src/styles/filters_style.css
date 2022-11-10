@@ -101,14 +101,21 @@ select:-ms-expand {
 
 }
 
-.input-value {
+.input-number {
   align-self: end;
   background-color: black;
   border: 0.5px solid #F5EFDA;
   border-radius: 0.25em;
   color: white;
+  font-size: 14px;
   height: 3em;
   margin: 0 0.5em;
+  padding: 2px;
   width: 20em;
 }
 
+input[ type = 'number' ]::-webkit-inner-spin-button {
+  height: 30px;
+  opacity: 1;
+  width: 30px;
+}

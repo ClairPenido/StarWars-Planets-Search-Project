@@ -4,7 +4,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Stardos+Stencil&display=swap') ;
 
-/* td = titulo das colunas */
+
 table {
   background-color: #282B28;
   border-collapse: collapse;
@@ -13,6 +13,7 @@ table {
   margin: 5px 0;
 }
 
+/* td = titulo das colunas */
 th, td {
   border-bottom: 1px solid #F5EFDA;
   border-top: 1px solid #F5EFDA;

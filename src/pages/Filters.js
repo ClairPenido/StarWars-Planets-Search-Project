@@ -90,7 +90,7 @@ function Filters() {
           </div>
         </label>
         <input
-          className="input-value"
+          className="input-number"
           data-testid="value-filter"
           name="value-filter"
           type="number"
