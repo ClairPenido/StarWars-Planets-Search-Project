@@ -10,5 +10,5 @@
 
 <p> Link para olhar e experimentar a aplicação: </p> <br>
 
-[StarWars](https://wonderful-panda-38e552.netlify.app/) <br>
+[StarWars](https://star-wars-search-cp.netlify.app/) <br>
 
