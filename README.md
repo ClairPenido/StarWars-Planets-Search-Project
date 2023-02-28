@@ -10,4 +10,6 @@
 
 <p> Link para olhar e experimentar a aplicação: </p> <br>
 
-[StarWars](https://wonderful-panda-38e552.netlify.app/)
+[StarWars](https://wonderful-panda-38e552.netlify.app/) <br>
+
+<b> Obs.: A Api não está funcionando, já contactei, mas não obtive resposta... </b>
