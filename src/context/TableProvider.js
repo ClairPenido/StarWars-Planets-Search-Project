@@ -14,7 +14,7 @@ export default function TableProvider({ children }) { // onde usar será o pai d
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
 
   const getPlanets = () => {
-    fetch('https://swapi-trybe.herokuapp.com/api/planets/')
+    fetch('https://swapi.dev/api/planets')
       .then((response) => response.json())
       .then((response) => {
         const objResults = response.results;
