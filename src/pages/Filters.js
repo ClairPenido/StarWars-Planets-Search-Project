@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-max-depth */
 import React, { useContext, useState, useEffect } from 'react';
 import tableContext from '../context/tableContext';
@@ -25,7 +26,7 @@ function Filters() {
     e.preventDefault();
     setFilterByNumericValues(
       [...filterByNumericValues,
-        { inputName, columnFilter, comparisonFilter, inputNumber }],
+      { inputName, columnFilter, comparisonFilter, inputNumber }],
     );
     setArrayOptions([...arrayOptions.filter((selected) => selected !== columnFilter)]); // aqui remove
   });
@@ -54,8 +55,8 @@ function Filters() {
           data-testid="name-filter"
           name="filter name"
           type="text"
-          value={ inputName }
-          onChange={ (e) => setInputName(e.target.value) }
+          value={inputName}
+          onChange={(e) => setInputName(e.target.value)}
         />
       </header>
       <form>
@@ -65,11 +66,11 @@ function Filters() {
             <select
               data-testid="column-filter"
               name="column-filter"
-              value={ columnFilter }
-              onChange={ (e) => setColumnFilter(e.target.value) }
+              value={columnFilter}
+              onChange={(e) => setColumnFilter(e.target.value)}
             >
               {arrayOptions.map((op, index) => (
-                <option key={ index } value={ op }>{ op }</option>)) }
+                <option key={index} value={op}>{op}</option>))}
             </select>
           </div>
         </label>
@@ -80,8 +81,8 @@ function Filters() {
               className="select-field"
               data-testid="comparison-filter"
               name="comparison-filter"
-              value={ comparisonFilter }
-              onChange={ (e) => setComparisonFilter(e.target.value) }
+              value={comparisonFilter}
+              onChange={(e) => setComparisonFilter(e.target.value)}
             >
               <option value="maior que">maior que</option>
               <option value="menor que">menor que</option>
@@ -94,14 +95,14 @@ function Filters() {
           data-testid="value-filter"
           name="value-filter"
           type="number"
-          value={ inputNumber }
-          onChange={ (e) => setInputNumber(e.target.value) }
+          value={inputNumber}
+          onChange={(e) => setInputNumber(e.target.value)}
         />
         <button
           className="button-filter"
           data-testid="button-filter"
           type="submit"
-          onClick={ (e) => clickSubmitButton(e) }
+          onClick={(e) => clickSubmitButton(e)}
         >
           Filtrar
         </button>
@@ -109,26 +110,26 @@ function Filters() {
           className="button-filter"
           data-testid="button-remove-filters"
           type="submit"
-          onClick={ clickRemoveFilters }
+          onClick={clickRemoveFilters}
         >
           Remover todas filtragens
         </button>
       </form>
       {filterByNumericValues.map((elem, index) => (
-        <p key={ index } data-testid="filter">
-          <span value={ columnFilter }>{ elem.columnFilter }</span>
+        <p key={index} data-testid="filter">
+          <span value={columnFilter}>{elem.columnFilter}</span>
           {' '}
-          <span value={ comparisonFilter }>{ elem.comparisonFilter }</span>
+          <span value={comparisonFilter}>{elem.comparisonFilter}</span>
           {' '}
-          <span value={ inputNumber }>{ elem.inputNumber }</span>
+          <span value={inputNumber}>{elem.inputNumber}</span>
           {' '}
           <button
             type="button"
-            onClick={ () => clickRemoveSelectedFilter(elem.columnFilter) }
+            onClick={() => clickRemoveSelectedFilter(elem.columnFilter)}
           >
             X
           </button>
-        </p>)) }
+        </p>))}
     </div>
   );
 }
